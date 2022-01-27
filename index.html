@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="style.css" />
+  <!-- <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+  <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script> -->
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+  <script
+    src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
+  <script
+    src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
+  <script src="js/models.js"></script>
+  <script src="js/userState.js"></script>
+  <script src="js/interaction.js"></script>
+</head>
+
+<body style="margin: 0px; overflow: hidden">
+  <div class="speech-bubble"></div>
+  <a-scene embedded cursor="rayOrigin: mouse" accepts-clicks vr-mode-ui="enabled: false;"
+    loading-screen="enabled: false;" renderer="logarithmicDepthBuffer: true;"
+    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" id="scene" gesture-detector>
+
+    <a-assets>
+      <!-- the character -->
+      <a-asset-item id="male-obj" src="builder-markers/characters/male.gltf"></a-asset-item>
+      <a-asset-item id="female-obj" src="builder-markers/characters/female.gltf"></a-asset-item>
+
+
+      <!-- the clues -->
+      <a-asset-item id="doctor-obj" src="builder-markers/clues/doctor.glb"></a-asset-item>
+      <a-asset-item id="eagle-obj" src="builder-markers/clues/eagle.glb"></a-asset-item>
+      <a-asset-item id="giftBox-obj" src="builder-markers/clues/giftBox.glb"></a-asset-item>
+      <a-asset-item id="horse-obj" src="builder-markers/clues/horse.glb"></a-asset-item>
+      <a-asset-item id="knife-obj" src="builder-markers/clues/knife.glb"></a-asset-item>
+      <a-asset-item id="pharaoh-obj" src="builder-markers/clues/pharaoh.glb"></a-asset-item>
+      <a-asset-item id="praying-obj" src="builder-markers/clues/praying.gltf"></a-asset-item>
+      <a-asset-item id="sleep-obj" src="builder-markers/clues/sleep.glb"></a-asset-item>
+      <a-asset-item id="spatula-obj" src="builder-markers/clues/spatula.gltf"></a-asset-item>
+      <a-asset-item id="sun-obj" src="builder-markers/clues/sun.glb"></a-asset-item>
+    </a-assets>
+
+    <!-- the Characters -->
+    <a-marker id="male-marker" type="pattern" url="builder-markers/character-markers/pattern-male.patt">
+      <a-entity id="papa-smurf" scale="0.12 0.12 0.12" gltf-model="#male-obj" rotation="0 90 0" position="0 0 0">
+      </a-entity>
+    </a-marker>
+
+    <a-marker id="female-marker" type="pattern" url="builder-markers/character-markers/pattern-female.patt">
+      <a-entity id="papa-smurf" scale="0.12 0.12 0.12" gltf-model="#female-obj" rotation="0 90 0" position="0 0 0">
+      </a-entity>
+    </a-marker>
+
+    <!-- animation-mixer="loop: repeat" class="clickable" gesture-handler -->
+    <!-- the Clues -->
+    <a-marker id="doctor-marker" type="pattern" url="builder-markers/clues-markers/pattern-doctor.patt">
+      <a-entity id="doctor" gltf-model="#doctor-obj" rotation="-90 0 0" position="0 0 -2" scale="5 5 5"></a-entity>
+    </a-marker>
+    <a-marker id="eagle-marker" type="pattern" url="builder-markers/clues-markers/pattern-eagle.patt">
+      <a-entity id="eagle" gltf-model="#eagle-obj" rotation="-90 0 0" position="0 0 -2" scale="5 5 5"></a-entity>
+    </a-marker>
+    <a-marker id="giftBox-marker" type="pattern" url="builder-markers/clues-markers/pattern-giftBox.patt">
+      <a-entity id="giftBox" gltf-model="#giftBox-obj" rotation="-90 0 0" position="0 0 -2" scale="5 5 5"></a-entity>
+    </a-marker>
+    <a-marker id="horse-marker" type="pattern" url="builder-markers/clues-markers/pattern-horse.patt">
+      <a-entity id="horse" gltf-model="#horse-obj" rotation="-90 0 0" position="0 0 -2" scale="5 5 5"></a-entity>
+    </a-marker>
+    <a-marker id="knife-marker" type="pattern" url="builder-markers/clues-markers/pattern-knife.patt">
+      <a-entity id="knife" gltf-model="#knife-obj" rotation="0 0 0" position="0 0 -2" scale="5 5 5"></a-entity>
+    </a-marker>
+    <a-marker id="pharaoh-marker" type="pattern" url="builder-markers/clues-markers/pattern-pharaoh.patt">
+      <a-entity id="pharaoh" gltf-model="#pharaoh-obj" rotation="-90 0 0" position="0 0 -2" scale="5 5 5"></a-entity>
+    </a-marker>
+    <a-marker id="praying-marker" type="pattern" url="builder-markers/clues-markers/pattern-praying.patt">
+      <a-entity id="praying" gltf-model="#praying-obj" rotation="0 120 0" position="0 0 -2" scale="0.2 0.2 0.2">
+      </a-entity>
+    </a-marker>
+    <a-marker id="sleep-marker" type="pattern" url="builder-markers/clues-markers/pattern-sleep.patt">
+      <a-entity id="sleep" gltf-model="#sleep-obj" rotation="-90 0 0" position="0 0 -2" scale="5 5 5"></a-entity>
+    </a-marker>
+    <a-marker id="spatula-marker" type="pattern" url="builder-markers/clues-markers/pattern-spatula.patt">
+      <a-entity id="spatula" gltf-model="#spatula-obj" rotation="0 120 0" position="0 0 -2" scale="0.2 0.2 0.2">
+      </a-entity>
+    </a-marker>
+    <a-marker id="sun-marker" type="pattern" url="builder-markers/clues-markers/pattern-sun.patt">
+      <a-entity id="sun" gltf-model="#sun-obj" rotation="-90 0 0" position="0 0 -2" scale="5 5 5"></a-entity>
+    </a-marker>
+
+
+    <a-entity camera></a-entity>
+  </a-scene>
+</body>
+
+</html>
