@@ -85,7 +85,7 @@ function initiateModels() {
         "❌❌ لغم",
     },
     {
-      name: "kinfe",
+      name: "knife",
       dialogue:
         "❌❌ لغم",
     },
