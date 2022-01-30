@@ -25,7 +25,6 @@
 
     <a-assets>
       <!-- the character -->
-      <a-asset-item id="male-obj" src="builder-markers/characters/male.gltf"></a-asset-item>
       <a-asset-item id="female-obj" src="builder-markers/characters/female.gltf"></a-asset-item>
 
 
@@ -43,13 +42,8 @@
     </a-assets>
 
     <!-- the Characters -->
-    <a-marker id="male-marker" type="pattern" url="builder-markers/character-markers/pattern-male.patt">
-      <a-entity id="papa-smurf" scale="0.12 0.12 0.12" gltf-model="#male-obj" rotation="0 90 0" position="0 0 0">
-      </a-entity>
-    </a-marker>
-
     <a-marker id="female-marker" type="pattern" url="builder-markers/character-markers/pattern-female.patt">
-      <a-entity id="papa-smurf" scale="0.12 0.12 0.12" gltf-model="#female-obj" rotation="0 90 0" position="0 0 0">
+      <a-entity id="female" scale="0.12 0.12 0.12" gltf-model="#female-obj" rotation="0 90 0" position="0 0 0">
       </a-entity>
     </a-marker>
 
