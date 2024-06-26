@@ -1,0 +1,12 @@
+{
+  "name": "ar-publish-public-2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start-https": "http-server -S -C ssl/server.cert -K ssl/server.key -p 8000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

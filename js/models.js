@@ -30,72 +30,52 @@ Tool.prototype = Object.create(ARModel.prototype);
 function initiateModels() {
   var buildersArray = [
     {
-      name: "female",
+      name: "library",
       dialogue:
-        "يلا نلعب !, حل اللغز واجمع المفاتيح عشان تفوز , ديربالك من الالغام <br/> Clue 1: إسأل مجرب ولا تسأل طبيب",
+        "Reading books is enjoyable for some people. On campus where would you go to find or look for a book.",
     },
     {
-      name: "doctor",
+      name: "mrOmar",
       dialogue:
-        "لقيتني 🏥👨‍⚕️ !! <br/>مفتاح : B <br/> Clue 2: تجيك التهايم وإنت ....",
+        "After finding the library, now you need to find a person on campus:<br/>a. Sometimes he wears glasses<br/>b. You go to him for assistance and if you face an issue<br/>c. His name has 4 letters<br/>d. Take a selfie with that person to get the next clue",
+      tool: { name: "selfie", dialogue: "Take a selfie with Mr. Omar" },
+      successDialogue:
+        "Great! You found Mr. Omar. Where do you go if you like video games?",
     },
     {
-      name: "sleep",
+      name: "gamingLounge",
       dialogue:
-        "من متى نايم ؟ 😴💤 <br/>مفتاح : R <br/> Clue 3: مع ....... يا شقرا  ",
+        "After finding the gaming lounge, now you need to look for the following:<br/>a. 5 letters that is an abbreviation<br/>b. One letter in blue and 4 in white<br/>c. Outdoors have a new meaning",
     },
     {
-      name: "horse",
+      name: "ktechSign",
       dialogue:
-        "اسرع 🐎🐎! <br/>مفتاح : A <br/> Clue 4: الي ما يعرف ..... يشويه",
+        "After locating the ktech sign at the main entrance, now you are one step to finish the race and finding the treasure. You need to look for a door:<br/>a. Behind it you can fix virtually anything<br/>b. You can get any access and beyond<br/>c. The door is next to the door of money",
     },
     {
-      name: "eagle",
+      name: "technologySolution",
       dialogue:
-        "حرام عليك تشويني 🦅🦅 ! <br/>مفتاح : I <br/> Clue 5: الي بالجدر يطلعه .......",
+        "After locating the Technology Solution door you are at your final step, you need to find a person on campus, and you have to say the password: (AKONAMATATA)<br/>a. The password is:<br/>b. The person is located on the ground floor<br/>c. An L shaped office<br/>d. The only female in the office",
     },
     {
-      name: "spatula",
+      name: "finalStep",
       dialogue:
-        "شكلك يوعان 🥄🥄 ! <br/>مفتاح : N <br/> برافووو !! فزتوا باللعبه",
-    },
-    {
-      name: "giftBox",
-      dialogue:
-        "❌❌ لغم",
-    },
-    {
-      name: "pharaoh",
-      dialogue:
-        "❌❌ لغم",
-    },
-    {
-      name: "praying",
-      dialogue:
-        "❌❌ لغم",
-    },
-    {
-      name: "sun",
-      dialogue:
-        "❌❌ لغم",
-    },
-    {
-      name: "knife",
-      dialogue:
-        "❌❌ لغم",
+        "You must send the selfie you took with Mr. Omar to @ktechstudentds Instagram account via direct message and “YOU ARE DONE CONGRTULATIONS”",
     },
   ];
 
   buildersArray.forEach(function (builder) {
-    builders.push(
-      new Builder(
-        builder.name,
-        builder.dialogue,
-        builder.tool,
-        builder.successDialogue
-      )
+    var tool = builder.tool
+      ? new Tool(builder.tool.name, builder.tool.dialogue)
+      : null;
+    var newBuilder = new Builder(
+      builder.name,
+      builder.dialogue,
+      tool,
+      builder.successDialogue
     );
-    if (builder.tool) tools.push(builder.tool);
+    builders.push(newBuilder);
+    if (tool) tools.push(tool);
   });
 
   console.log("builders", builders);
